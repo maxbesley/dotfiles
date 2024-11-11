@@ -1,6 +1,7 @@
 alias update='sudo apt update'
 alias upgrade='sudo apt update && sudo apt upgrade -y'
 alias install='sudo apt install'
+alias autoremove='sudo apt autoremove'
 
 alias ls='ls --color=auto --group-directories-first'
 alias la='ls -A'                             # list all
@@ -13,17 +14,26 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 alias .....='cd ../../../..'
 
-alias aliases='nvim ~/.bash_aliases'
-alias bashrc='nvim ~/.bashrc'
-alias sbashrc='source ~/.bashrc'
+alias mv='mv -v'
+alias mkdir='mkdir -pv'
+alias please='sudo $(history -p !!)'
 alias path='echo -e ${PATH//:/\\n}'
 
-alias please='sudo $(history -p !!)'
+alias sudo='sudo '
+alias shutdown='sudo shutdown'
+alias reboot='sudo reboot'
+alias quit='exit'
+alias clr='clear'
+alias more='less'
+alias sctl='systemctl'
 
 alias vi='nvim'
-alias vim='vim'
-alias vimrc='vim ~/.vimrc'
+# alias vi='vim'
+alias vimrc='vi ~/.vimrc'
 alias nvimrc='cd ~/.config/nvim'
+alias aliases='vi ~/.bash_aliases'
+alias bashrc='vi ~/.bashrc'
+alias sbashrc='source ~/.bashrc'
 
 alias gadd='git add'
 alias gcomm='git commit -m'
@@ -33,16 +43,13 @@ alias gdiff='git diff'
 alias gstat='git status'
 alias glog='git log'
 
-alias clr='clear'
-alias more='less'
-alias sudo='sudo '
-alias shutdown='sudo shutdown'
-alias reboot='sudo roboot'
-alias quit='exit'
-
-alias myip='hostname -I'                  # private
-alias mypubip='curl -w "\n" ifconfig.me'  # public
+alias myip='hostname -I'                   # private
+alias mypubip='curl -sw "\n" ifconfig.me'  # public
+alias whereami="curl -s https://json.geoiplookup.io/$(mypubip) | jq -r '.city, .country_name'"
+alias ping='ping -c 5'
 alias ports='ss -tulanp'
+alias nc='nc -v'
+alias tar='tar -xzvf'  # extract *.tar.gz files
 alias diskspace='du -S | sort -n -r | more'
 
 alias py=$(which python3.11)
