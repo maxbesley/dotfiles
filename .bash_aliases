@@ -42,6 +42,7 @@ alias gclone='git clone'
 alias gdiff='git diff'
 alias gstat='git status'
 alias glog='git log'
+alias ghead='echo "" && git show-ref && echo "" && git log -1 && echo ""'
 
 alias myip='hostname -I'                   # private
 alias mypubip='curl -sw "\n" ifconfig.me'  # public
