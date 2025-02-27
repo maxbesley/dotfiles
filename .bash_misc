@@ -4,12 +4,6 @@
 # are not worth putting in my ~/.bashrc file.
 
 
-# install Ruby Gems to ~/gems
-export GEM_HOME="$HOME/gems"
-export PATH="$PATH:$HOME/gems/bin"
-# rbenv
-#eval "$(~/.rbenv/bin/rbenv init - bash)"
-
 # ghcup
 export PATH="$PATH:$HOME/.cabal/bin:$HOME/.ghcup/bin"
 
