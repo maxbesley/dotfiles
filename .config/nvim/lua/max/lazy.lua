@@ -11,12 +11,10 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-
-local plugins = { { import = 'max.plugins' } }
 local opts = {
     change_detection = {
         notify = false,
     },
 }
 
-require('lazy').setup(plugins, opts)
+require('lazy').setup('max.plugins', opts)
