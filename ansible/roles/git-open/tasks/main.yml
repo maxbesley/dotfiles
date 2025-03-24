@@ -1,0 +1,18 @@
+# https://github.com/paulirish/git-open
+---
+- name: Determine if git-open is present
+  shell: command -v git-open
+  register: gitopen_exists
+  ignore_errors: true
+  changed_when: false
+
+- block:
+    - name: Download the git-open script
+      ansible.builtin.get_url:
+        url: https://raw.githubusercontent.com/paulirish/git-open/refs/heads/master/git-open
+        dest: /usr/local/bin/git-open
+        mode: '0755'
+      become: true
+
+  when: gitopen_exists.failed
+
