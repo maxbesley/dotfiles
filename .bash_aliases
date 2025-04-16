@@ -14,6 +14,7 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 alias .....='cd ../../../..'
 
+alias cp='cp -v'
 alias mv='mv -v'
 alias mkdir='mkdir -pv'
 alias please='sudo $(history -p !!)'
@@ -22,9 +23,10 @@ alias path='echo -e ${PATH//:/\\n}'
 alias sudo='sudo '
 alias shutdown='sudo shutdown'
 alias reboot='sudo reboot'
-alias quit='exit'
 alias clr='clear'
+alias quit='exit'
 alias more='less'
+alias where='which'
 alias sctl='systemctl'
 
 alias vi='nvim'
@@ -41,8 +43,9 @@ alias gpush='git push'
 alias gclone='git clone'
 alias gd='git diff'
 alias gs='git status'
-alias glog='git log'
+alias gl='git log --graph --oneline'
 alias ghead='echo "" && git show-ref && echo "" && git log -1 && echo ""'
+alias gopen='git-open'  # https://github.com/paulirish/git-open
 
 alias myip='hostname -I'                   # private
 alias mypubip='curl -sw "\n" ifconfig.me'  # public
@@ -50,6 +53,7 @@ alias whereami="curl -s https://json.geoiplookup.io/$(mypubip) | jq -r '.city, .
 alias ping='ping -c 5'
 alias ports='ss -tulanp'
 alias nc='nc -v'
+alias dns='host'
 alias tar='tar -xzvf'  # extract *.tar.gz files
 alias diskspace='du -S | sort -n -r | more'
 
