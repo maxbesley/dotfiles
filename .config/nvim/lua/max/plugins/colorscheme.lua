@@ -1,73 +1,71 @@
--- Note:
--- The theme you want to use should
--- have "lazy = false" set and all
--- the others should be set to "true".
+local colors = 'kanagawa'
 
-return {
 
-   {
-       'phha/zenburn.nvim',
-       name = 'zenburn',
-       lazy = true,
-       priority = 1000,
-       config = function()
-           require('zenburn').setup()
-       end,
-   },
+if colors == 'zenburn' then
 
-   {
-       'maxmx03/solarized.nvim',
-       name = 'solarized',
-       lazy = true,
-       priority = 1000,
-       config = function()
-           vim.o.background = 'dark'
-           vim.cmd.colorscheme('solarized')
-       end,
-   },
+    return {
+        'phha/zenburn.nvim',
+        name = 'zenburn',
+        config = function()
+            require('zenburn').setup()
+        end
+    }
 
-   {
-       'dasupradyumna/midnight.nvim',
-       name = 'midnight',
-       lazy = true,
-       priority = 1000,
-       config = function()
-           vim.cmd.colorscheme('midnight')
-       end,
-   },
+elseif colors == 'solarized' then
 
-   {
-       'shaunsingh/seoul256.nvim',
-       name = 'seoul256',
-       lazy = true,
-       priority = 1000,
-       config = function()
-           vim.g.seoul256_disable_background = true
-           require('seoul256')
-       end,
-    },
+    return {
+        'maxmx03/solarized.nvim',
+        name = 'solarized',
+        config = function()
+            vim.o.background = 'dark'
+            vim.cmd.colorscheme('solarized')
+        end
+    }
 
-    {
+elseif colors == 'midnight' then
+
+    return {
+        'dasupradyumna/midnight.nvim',
+        name = 'midnight',
+        config = function()
+            vim.cmd.colorscheme('midnight')
+        end
+    }
+
+elseif colors == 'seoul256' then
+
+    return {
+        'shaunsingh/seoul256.nvim',
+        name = 'seoul256',
+        config = function()
+            vim.g.seoul256_disable_background = true
+            require('seoul256')
+        end
+    }
+
+elseif colors == 'kanagawa' then
+
+    return {
         'rebelot/kanagawa.nvim', -- my fav so far...
         name = 'kanagawa',
-        lazy = false,
-        priority = 1000,
         config = function()
             local theme = 'wave'
             -- local theme = 'dragon'
             require('kanagawa').load(theme)
-        end,
-    },
+        end
+    }
 
-    {
+elseif colors == 'rose-pine' then
+
+    return {
         'rose-pine/neovim',
         name = 'rose-pine',
-        lazy = true,
-        priority = 1000,
         config = function()
             require('rose-pine').setup()
             vim.cmd.colorscheme('rose-pine-moon')
-        end,
-    },
+        end
+    }
 
-}
+else
+    return {}
+end

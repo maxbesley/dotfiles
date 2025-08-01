@@ -50,7 +50,7 @@ return {
                 'nix',
                 'html',
                 'css',
-                'prisma',
+                'vento',
                 'markdown',
                 'markdown_inline',
                 'query',
@@ -95,6 +95,12 @@ return {
                 },
             },
         }
+
+        vim.filetype.add({
+            extension = {
+                vto = 'vento',
+            },
+        })
 
         require('treesitter-context').setup { enable = true }
     end,
