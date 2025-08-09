@@ -26,7 +26,7 @@ ICON="==>"
 TO_INSTALL="git curl stow ansible"
 DOTFILES_DIR="$HOME/.dotfiles"
 ANSIBLE_DIR="$DOTFILES_DIR/ansible"
-GITHUB_REPO="https://github.com/MaxBesley/dotfiles"
+GITHUB_REPO="https://github.com/maxbesley/dotfiles"
 
 
 # Restrict to only a few OSes
@@ -64,6 +64,6 @@ cd $DOTFILES_DIR && stow --verbose .
 
 # Record the fact that this computer was bootstrapped
 echo "$ICON BOOTSTRAPPING DONE!"
-echo "# DO NOT CHANGE THIS!" >> $DOTFILES_DIR/.bash_misc
-echo "export BOOTSTRAP_COMPLETE=1" >> $DOTFILES_DIR/.bash_misc
+echo "# DO NOT CHANGE THIS!" >> $DOTFILES_DIR/.config/bash/misc
+echo "export BOOTSTRAP_COMPLETE=1" >> $DOTFILES_DIR/.config/bash/misc
 

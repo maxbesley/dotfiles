@@ -42,12 +42,12 @@ esac
 #force_color_prompt=yes
 if [ -n "$force_color_prompt" ]; then
     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-	# We have color support; assume it's compliant with Ecma-48
-	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
-	# a case would tend to support setf rather than setaf.)
-	color_prompt=yes
+    # We have color support; assume it's compliant with Ecma-48
+    # (ISO/IEC-6429). (Lack of such support is extremely rare, and such
+    # a case would tend to support setf rather than setaf.)
+    color_prompt=yes
     else
-	color_prompt=
+    color_prompt=
     fi
 fi
 
@@ -101,8 +101,8 @@ export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[01;32m'
 
 
-# ~/.bash_misc is used to source various machine-specific odds and ends
-for file in ~/.{bash_aliases,bash_functions,bash_exports,bash_misc}; do
+# The misc file is used to store various machine-specific odds and ends
+for file in ~/.config/bash/{aliases,functions,exports,misc}; do
     [ -f $file ] && [ -r $file ] && source $file
 done
 
@@ -116,17 +116,17 @@ done
 #    - Use TAB to select multiple items
 #    - Ctrl-k and Ctrl-j move up and down
 #    - In the terminal type ** and then TAB to trigger autocomplete
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
-eval "$(fzf --bash)"
 export FZF_DEFAULT_COMMAND="fd --type f"
 export FZF_DEFAULT_OPTS="--multi --reverse"
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+eval "$(fzf --bash)"
 
 # ------ zoxide (better cd) ------
 eval "$(zoxide init --cmd cd bash)"
 
 # ------ bat (better cat) ------
-alias cat='bat --color=always --paging=never'
 export BAT_THEME=TwoDark
+alias cat='bat --color=always --paging=never'
 
 # ------ eza (better ls) ------
 alias ls='eza --color=always --group-directories-first --icons=always --git --no-filesize --no-time --no-user --no-permissions'
