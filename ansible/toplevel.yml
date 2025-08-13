@@ -32,7 +32,11 @@
       include_role:
         name: git-open
 
-    - name: Build and install neovim from source
+    - name: Ghostty
+      include_role:
+        name: ghostty
+
+    - name: Build and install Neovim from source
       include_role:
         name: neovim
 

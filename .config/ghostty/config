@@ -1,0 +1,33 @@
+# https://ghostty.org/docs/config/reference
+
+theme = flexoki-dark
+# theme = NightLion v1
+# theme = carbonfox
+# theme = catppuccin-mocha
+
+font-size = 13
+font-family = Fira Code Nerd Font
+
+background-blur = true
+background-opacity = 0.95
+
+window-width = 100
+window-height = 30
+window-padding-x = 10
+window-padding-y = 10
+window-decoration = auto
+window-padding-color = extend
+window-padding-balance = true
+
+cursor-style = block
+cursor-style-blink = false
+cursor-invert-fg-bg = true
+
+mouse-scroll-multiplier = 2.0
+mouse-hide-while-typing = true
+
+confirm-close-surface = false
+
+copy-on-select = clipboard
+clipboard-trim-trailing-spaces = true
+

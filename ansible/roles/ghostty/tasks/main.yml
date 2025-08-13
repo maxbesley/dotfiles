@@ -1,0 +1,11 @@
+---
+- name: Check if Ghostty is installed
+  shell: command -v ghostty
+  register: ghostty_exists
+  ignore_errors: true
+  changed_when: false
+
+- name: Install Ghostty using a bash script
+  shell: curl -sSfL https://raw.githubusercontent.com/mkasberg/ghostty-ubuntu/HEAD/install.sh | bash
+  when: ghostty_exists.failed
+
