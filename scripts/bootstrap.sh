@@ -56,7 +56,8 @@ fi
 
 # Run the Ansible playbook
 echo "$ICON Running Ansible playbook ..."
-cd $ANSIBLE_DIR && ansible-playbook --ask-become-pass toplevel.yml
+cd $ANSIBLE_DIR
+ansible-playbook --ask-become-pass toplevel.yml
 
 # Run GNU stow
 echo "$ICON Establishing symlinks using GNU stow ..."
@@ -64,6 +65,6 @@ cd $DOTFILES_DIR && stow --verbose .
 
 # Record the fact that this computer was bootstrapped
 echo "$ICON BOOTSTRAPPING DONE!"
-echo "# DO NOT CHANGE THIS!" >> $DOTFILES_DIR/.config/bash/misc
-echo "export BOOTSTRAP_COMPLETE=1" >> $DOTFILES_DIR/.config/bash/misc
+echo "# DO NOT CHANGE THIS!" >> $DOTFILES_DIR/.config/bash/exports
+echo "export BOOTSTRAP_COMPLETE=1" >> $DOTFILES_DIR/.config/bash/exports
 

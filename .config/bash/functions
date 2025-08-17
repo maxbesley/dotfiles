@@ -2,8 +2,8 @@
 
 
 # Follow cd by an ls
-function cd {
-    builtin cd "$@" && ls -A
+function cdl {
+    cd "$@" && ls -A
 }
 
 # Navigate up directories

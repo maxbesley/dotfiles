@@ -7,10 +7,11 @@ alias install='sudo apt install'
 alias autoremove='sudo apt autoremove'
 
 alias ls='ls --color=auto --group-directories-first'
+alias l='ls'
 alias la='ls -A'                             # list all
 alias ll='ls -alhGg --classify'              # list long
 alias lt='ls -I ".git" -TA --level=2 | bat'  # list tree (uses eza)
-alias l='ls'
+alias ff='fzf --preview "bat --style=numbers --color=always {}"'
 
 alias ..='cd ..'
 alias ...='cd ../..'
@@ -38,21 +39,23 @@ alias vimrc='vi ~/.vimrc'
 alias nvimrc='cd ~/.config/nvim'
 alias aliases='vi ~/.config/bash/aliases'
 alias bashrc='vi ~/.bashrc'
-alias sbashrc='source ~/.bashrc'
+alias reload='source ~/.bashrc'
 
+alias g='git'
 alias ga='git add'
 alias gcomm='git commit -m'
 alias gpush='git push'
 alias gclone='git clone'
 alias gd='git diff'
 alias gs='git status'
-alias gl='git log --graph --oneline'
+alias glog='git log --graph --oneline'
 alias ghead='echo "" && git show-ref && echo "" && git log -1 && echo ""'
 alias gopen='git-open'  # https://github.com/paulirish/git-open
 
 alias myip='hostname -I'                   # private
 alias mypubip='curl -sw "\n" ifconfig.me'  # public
 alias whereami="curl -s https://json.geoiplookup.io/$(mypubip) | jq -r '.city, .country_name'"
+alias whatami='lsb_release -d | head -2 | tail -1'
 alias ping='ping -c 5'
 alias ports='ss -tulanp'
 alias nc='nc -v'
@@ -60,4 +63,15 @@ alias dns='host'
 alias tar='tar -xzvf'  # extract *.tar.gz files
 alias diskspace='du -S | sort -n -r | more'
 
-alias py=$(which python3.11)
+alias m='make'
+
+alias dockernuke='docker stop $(docker ps -aq) ; docker system prune -af'
+
+alias py=$(which python3.12)
+
+if [[ $(grep -i Microsoft /proc/version) ]]; then
+    # for wsl
+    alias desktop='cd /mnt/c/users/max/desktop'
+else
+    alias desktop='cd ~/Desktop'
+fi
