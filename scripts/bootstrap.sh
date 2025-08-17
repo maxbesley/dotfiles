@@ -65,6 +65,6 @@ cd $DOTFILES_DIR && stow --verbose .
 
 # Record the fact that this computer was bootstrapped
 echo "$ICON BOOTSTRAPPING DONE!"
-echo "# DO NOT CHANGE THIS!" >> $DOTFILES_DIR/.config/bash/exports
-echo "export BOOTSTRAP_COMPLETE=1" >> $DOTFILES_DIR/.config/bash/exports
+echo "# DO NOT CHANGE THIS!"       >> $DOTFILES_DIR/.config/bash/env
+echo "export BOOTSTRAP_COMPLETE=1" >> $DOTFILES_DIR/.config/bash/env
 

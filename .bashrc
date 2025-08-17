@@ -63,7 +63,7 @@ export LESS_TERMCAP_us=$'\E[01;32m'
 
 
 # The misc file is used to store various machine-specific odds and ends
-for file in ~/.config/bash/{aliases,functions,prompt,exports,path,misc,secrets}; do
+for file in ~/.config/bash/{aliases,functions,prompt,env,path,misc,secrets}; do
     [ -f $file ] && [ -r $file ] && source $file
 done
 
