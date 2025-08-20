@@ -1,8 +1,15 @@
 ---
+- name: Check if eza is already installed
+  shell: command -v eza
+  register: eza_exists
+  ignore_errors: true
+  changed_when: false
+
 - name: Download and install eza
-  ansible.builtin.unarchive:
+  unarchive:
     src: https://github.com/eza-community/eza/releases/download/v0.18.16/eza_x86_64-unknown-linux-gnu.zip
     dest: /usr/local/bin
-    remote_src: yes
+    remote_src: true
   become: true
+  when: eza_exists.failed
 

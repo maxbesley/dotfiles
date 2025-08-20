@@ -1,0 +1,11 @@
+Host web
+  HostName 1.2.3.4
+  User max
+  IdentityFile ~/.ssh/web
+  AddKeysToAgent yes
+  AddressFamily inet
+
+Host *
+  Port 22
+  LogLevel verbose
+

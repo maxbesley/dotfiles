@@ -1,10 +1,10 @@
 # Based on https://clojure.org/guides/install_clojure
 ---
 - name: Ensure APT clojure is absent
-  ansible.builtin.apt:
+  apt:
     name: clojure
     state: absent
-  become: true
+  become: yes
 
 - name: Check if clojure is already installed
   shell: command -v clojure
@@ -14,15 +14,15 @@
 
 - block:
   - name: Install the required packages
-    ansible.builtin.apt:
+    apt:
       pkg:
         - rlwrap
         - default-jdk
       state: latest
-    become: true
+    become: yes
 
   - name: Download the install script
-    ansible.builtin.get_url:
+    get_url:
       url: https://github.com/clojure/brew-install/releases/latest/download/linux-install.sh
       dest: /tmp/linux-install.sh
       mode: a+x
@@ -30,11 +30,11 @@
   - debug:
       msg: Now go and run "cd /tmp && sudo bash linux-install.sh"
 
-  when: clj_exists.failed
+  when: clj_exists.failed and ansible_os_family == 'Debian'
 
 - name: Ensure leiningen is installed
-  ansible.builtin.apt:
+  apt:
     name: leiningen
     state: latest
-  become: true
+  become: yes
 

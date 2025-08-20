@@ -1,11 +1,17 @@
 ---
 core_pkgs:
   - build-essential
+  - net-tools
   - clang
   - vim
   - tmux
   - ssh
+  - rsync
   - htop
+  - btop
+  - hping3
+  - traceroute
+  - jq
   - atool
 
 fun_pkgs:
@@ -13,7 +19,6 @@ fun_pkgs:
   - figlet
   - nyancat
   - cmatrix
-  - neofetch
   - fortune
   - cowsay
   - lolcat

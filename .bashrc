@@ -92,6 +92,7 @@ alias cat='bat --color=always --paging=never'
 # ------ eza (better ls) ------
 alias ls='eza --color=always --group-directories-first --icons=always --git --no-filesize --no-time --no-user --no-permissions'
 
+eval $(ssh-agent -s) &>/dev/null
 
 #figlet 'My PC' | lolcat && echo ''
 fortune | cowsay -f dragon | lolcat

@@ -8,6 +8,10 @@
       include_role:
         name: packages
 
+    - name: OpenSSH
+      include_role:
+        name: ssh
+
     - name: Nerd fonts
       include_role:
         name: fonts

@@ -1,6 +1,6 @@
 ---
 - name: Uninstall APT neovim
-  ansible.builtin.apt:
+  apt:
     name: neovim
     state: absent
   become: true
@@ -13,14 +13,14 @@
 
 - block:
     - name: Install build dependencies
-      ansible.builtin.apt:
+      apt:
         name: "{{ build_dependencies }}"
         state: present
         update_cache: true
       become: true
 
     - name: Clone neovim from GitHub
-      ansible.builtin.git:
+      git:
         repo: https://github.com/neovim/neovim.git
         dest: "{{ nvim_directory }}"
         depth: 1
@@ -42,7 +42,7 @@
       when: clone.changed
 
     - name: Delete source code directory
-      ansible.builtin.file:
+      file:
         path: "{{ nvim_directory }}"
         state: absent
       become: true

@@ -1,6 +1,6 @@
 ---
 - name: Ensure the fonts directory exists
-  ansible.builtin.file:
+  file:
     path: "{{ fonts_directory }}"
     state: directory
     mode: '0755'
@@ -13,13 +13,13 @@
 
 - block:
   - name: "Create an empty directory named {{ font_name }}"
-    ansible.builtin.file:
+    file:
       path: "{{ fonts_directory }}/{{ font_name }}"
       state: directory
       mode: '0755'
 
   - name: "Download and install the {{ font_name }} font from GitHub"
-    ansible.builtin.unarchive:
+    unarchive:
       src: https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/{{ font_name }}.zip
       dest: "{{ fonts_directory }}/{{ font_name }}"
       remote_src: yes

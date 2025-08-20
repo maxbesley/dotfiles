@@ -1,0 +1,12 @@
+---
+- name: Copy over my OpenSSH client config
+  copy:
+    src: config
+    dest: '{{ ansible_user_dir }}/.ssh/config'
+    owner: '{{ ansible_user_id }}'
+    group: '{{ ansible_user_id }}'
+    mode: '600'
+    force: yes
+    backup: yes
+  become: yes
+
