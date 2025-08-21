@@ -1,8 +1,9 @@
 [user]
-	name = Max Besley
-	email = besleymax@gmail.com
+    name = Max Besley
+    email = besleymax@gmail.com
 [core]
-	editor = vim
-	autocrlf = input
+    editor = vim
+    autocrlf = input
+    pager = diff-so-fancy | less --tabs=4 -RFX
 [init]
-	defaultBranch = main
+    defaultBranch = main
