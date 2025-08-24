@@ -1,4 +1,4 @@
-require 'max.core.options'
-require 'max.core.keymaps'
-require 'max.core.autocmd'
-require 'max.lazy'
+require 'core.options'
+require 'core.keymaps'
+require 'core.autocmd'
+require 'lazy'
