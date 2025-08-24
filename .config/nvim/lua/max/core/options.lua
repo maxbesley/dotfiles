@@ -5,7 +5,7 @@ local o = vim.opt
 -- line numbers
 o.number = true         -- show line numbers by default
 o.relativenumber = true -- show relative line numbers
-o.numberwidth = 8       -- line number column width
+o.numberwidth = 6       -- line number column width
 
 -- tabs and indentation
 o.expandtab = true
@@ -29,9 +29,12 @@ o.splitbelow = true
 
 o.timeoutlen = 1000         -- time in milliseconds to wait for a mapped sequence to complete
 o.mouse = ''                -- disable mouse support for the sake of learning Vim
-o.wrap = false              -- display lines as one long line
-o.clipboard = 'unnamedplus' -- use system clipboard as default register
+o.wrap = true               -- wrap lines longer than the width of the window
+o.linebreak = true          -- break long lines at a word boundary
+o.breakindent = true        -- visually indent wrapped lines
+o.foldenable = false        -- disable text folding
 o.iskeyword:append('-')     -- consider string-string as one word
+o.clipboard = 'unnamedplus' -- use system clipboard as default register
 o.scrolloff = 10            -- minimal number of screen lines to keep above and below the cursor
 o.sidescrolloff = 10        -- minimal number of columns to keep to the left/right of the cursor
 o.cmdheight = 2             -- number of lines to use for the command-line
