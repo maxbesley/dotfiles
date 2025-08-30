@@ -1,137 +1,137 @@
-local keymap = vim.api.nvim_set_keymap
-
-local opts = { noremap = true, silent = true }
-local term_opts = { silent = true }
-
 -- Modes
---   normal_mode = 'n',
---   insert_mode = 'i',
---   visual_mode = 'v',
---   visual_block_mode = 'x',
---   term_mode = 't',
---   command_mode = 'c',
+-- normal = 'n'
+-- insert = 'i'
+-- visual = 'v'
+-- visual_block = 'x'
+-- term = 't'
+-- command = 'c'
+
+
+local function map(m, k, v)
+  vim.api.nvim_set_keymap(m, k, v, { noremap = true, silent = true })
+end
 
 
 -- remap space as leader key
-keymap('', '<Space>', '<Nop>', opts)
+map('', '<Space>', '<Nop>')
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 
 -- disable arrow keys
-keymap('n', '<Up>', '<Nop>', opts)
-keymap('n', '<Down>', '<Nop>', opts)
-keymap('n', '<Left>', '<Nop>', opts)
-keymap('n', '<Right>', '<Nop>', opts)
-keymap('i', '<Up>', '<Nop>', opts)
-keymap('i', '<Down>', '<Nop>', opts)
-keymap('i', '<Left>', '<Nop>', opts)
-keymap('i', '<Right>', '<Nop>', opts)
+map('n', '<Up>', '<Nop>')
+map('n', '<Down>', '<Nop>')
+map('n', '<Left>', '<Nop>')
+map('n', '<Right>', '<Nop>')
+map('i', '<Up>', '<Nop>')
+map('i', '<Down>', '<Nop>')
+map('i', '<Left>', '<Nop>')
+map('i', '<Right>', '<Nop>')
 
 
 --- NORMAL ---
 -- save the file
-keymap('n', '<Esc>', '<Cmd>w<CR>', opts)
+map('n', '<Esc>', '<Cmd>w<CR>')
 
 -- navigate horizontally more easily
-keymap('n', 'L', '$', opts)
-keymap('n', 'H', '^', opts)
+map('n', 'L', '$')
+map('n', 'H', '^')
 
 -- cursor doesn't move when joining lines
-keymap('n', 'J', "mzJ`z", opts)
+map('n', 'J', "mzJ`z")
 
 -- next/prev cursor position
-keymap('n', '<C-i>', '<C-i>zz', opts)
-keymap('n', '<C-o>', '<C-o>zz', opts)
+map('n', '<C-i>', '<C-i>zz')
+map('n', '<C-o>', '<C-o>zz')
 
 -- navigate vertically by 1/2 page
-keymap('n', '<C-u>', '<C-u>zz', opts)
-keymap('n', '<C-d>', '<C-d>zz', opts)
+map('n', '<C-u>', '<C-u>zz')
+map('n', '<C-d>', '<C-d>zz')
 
 -- keep screen centred during "/" searching
-keymap('n', 'n', 'nzzzv', opts)
-keymap('n', 'N', 'Nzzzv', opts)
+map('n', 'n', 'nzzzv')
+map('n', 'N', 'Nzzzv')
 
 -- search for word under the cursor
-keymap('n', '*', '*zz', opts)
-keymap('n', '#', '#zz', opts)
+map('n', '*', '*zz')
+map('n', '#', '#zz')
 
 -- don't copy deleted single characters
-keymap('n', 'x', '"_x', opts)
+map('n', 'x', '"_x')
 
 -- don't copy when deleting
-keymap('n', '<leader>d', "\"_d", opts)
-keymap('v', '<leader>d', "\"_d", opts)
+map('n', '<leader>d', "\"_d")
+map('v', '<leader>d', "\"_d")
 
 -- use leader key to yank into system clipboard
-keymap('n', '<leader>y', "\"+y", opts)
-keymap('v', '<leader>Y', "\"+y", opts)
-keymap('n', '<leader>Y', "\"+Y", opts)
+map('n', '<leader>y', "\"+y")
+map('v', '<leader>Y', "\"+y")
+map('n', '<leader>Y', "\"+Y")
 
 -- toggle search highlights
-keymap('n', '<leader>thl', '<Cmd>set hls!<CR>', opts)
+map('n', '<leader>thl', '<Cmd>set hls!<CR>')
 
 -- substitute the word currently under the cursor
-keymap('n', '<leader>su', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], opts)
+map('n', '<leader>su', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
 -- surround a word in double quotes
-keymap('n', "<leader>\"", "viw<Esc>a\"<Esc>bi\"<Esc>lel", opts)
+map('n', "<leader>\"", "viw<Esc>a\"<Esc>bi\"<Esc>lel")
 
 -- easily add newlines
-keymap('n', '<leader>o', 'o<Esc>', opts)
-keymap('n', '<leader>O', 'O<Esc>', opts)
+map('n', '<leader>o', 'o<Esc>')
+map('n', '<leader>O', 'O<Esc>')
 
 -- visually select all text
-keymap('n', '<C-a>' ,'G$vgg0', opts)
+map('n', '<C-a>' ,'G$vgg0')
 
 -- split window management
-keymap('n', '<leader>sv', '<C-w>v', opts) -- split window vertically
-keymap('n', '<leader>sh', '<C-w>s', opts) -- split window horizontally
-keymap('n', '<leader>s=', '<C-w>=', opts) -- make split windows equal width & height
-keymap('n', '<leader>sx', '<Cmd>close<CR>', opts) -- close current split
+map('n', '<leader>sv', '<C-w>v') -- split window vertically
+map('n', '<leader>sh', '<C-w>s') -- split window horizontally
+map('n', '<leader>s=', '<C-w>=') -- make split windows equal width & height
+map('n', '<leader>sx', '<Cmd>close<CR>') -- close current split
 
 -- split window navigation
-keymap('n', '<leader>h', '<C-w>h', opts)
-keymap('n', '<leader>j', '<C-w>j', opts)
-keymap('n', '<leader>k', '<C-w>k', opts)
-keymap('n', '<leader>l', '<C-w>l', opts)
+map('n', '<leader>h', '<C-w>h')
+map('n', '<leader>j', '<C-w>j')
+map('n', '<leader>k', '<C-w>k')
+map('n', '<leader>l', '<C-w>l')
 
 -- resize split windows using arrow keys
-keymap('n', '<C-Up>', ':resize +3<CR>', opts)
-keymap('n', '<C-Down>', ':resize -1<CR>', opts)
-keymap('n', '<C-Left>', ':vertical resize +3<CR>', opts)
-keymap('n', '<C-Right>', ':vertical resize -1<CR>', opts)
+map('n', '<C-Up>', ':resize +3<CR>')
+map('n', '<C-Down>', ':resize -1<CR>')
+map('n', '<C-Left>', ':vertical resize +3<CR>')
+map('n', '<C-Right>', ':vertical resize -1<CR>')
 
 -- navigate buffers
-keymap('n', '<Tab>', '<Cmd>bnext<CR>', opts)
-keymap('n', '<S-Tab>', '<Cmd>bprevious<CR>', opts)
-keymap('n', '<leader>x', '<Cmd>bdelete<CR>', opts)
+map('n', '<Tab>', '<Cmd>bnext<CR>')
+map('n', '<S-Tab>', '<Cmd>bprevious<CR>')
+map('n', '<leader>x', '<Cmd>bdelete<CR>')
 
 
 --- INSERT ---
 -- mash these to leave insert mode
-keymap('i', 'jk', '<Esc>', opts)
-keymap('i', 'kj', '<Esc>', opts)
+map('i', 'jk', '<Esc>')
+map('i', 'kj', '<Esc>')
 -- nullify pressing escape
-keymap('i', '<Esc>', '<Nop>', opts)
+map('i', '<Esc>', '<Nop>')
 
 
 --- VISUAL ---
 -- for indenting text
-keymap('v', '<', '<gv', opts)
-keymap('v', '>', '>gv', opts)
+map('v', '<', '<gv')
+map('v', '>', '>gv')
 -- move text up and down
-keymap('v', 'J', ":m '>+1<CR>gv=gv", opts)
-keymap('v', 'K', ":m '<-2<CR>gv=gv", opts)
+map('v', 'J', ":m '>+1<CR>gv=gv")
+map('v', 'K', ":m '<-2<CR>gv=gv")
 -- for pasting over text with "p"
-keymap('v', 'p', '"_dP', opts)
+map('v', 'p', '"_dP')
 -- exit visual mode by pressing Ctrl-c
-keymap('v', '<Esc>', '<Nop>', opts)
+map('v', '<Esc>', '<Nop>')
 -- surround with double quotes???
---keymap("v", "<leader>\"", ":s/\%V\(.*\)\%V/"\1"/", opts)
+--map("v", "<leader>\"", ":s/\%V\(.*\)\%V/"\1"/")
 -- navigate horizontally in visual mode
-keymap('v', 'L', '$h', opts)
-keymap('v', 'H', '^', opts)
+map('v', 'L', '$h')
+map('v', 'H', '^')
 
 
 --- VISUAL BLOCK ---
@@ -139,12 +139,12 @@ keymap('v', 'H', '^', opts)
 
 --- TERMINAL ---
 -- better terminal navigation
---keymap('t', '<C-h>', '<C-\\><C-N><C-w>h', term_opts)
---keymap('t', '<C-j>', '<C-\\><C-N><C-w>j', term_opts)
---keymap('t', '<C-k>', '<C-\\><C-N><C-w>k', term_opts)
---keymap('t', '<C-l>', '<C-\\><C-N><C-w>l', term_opts)
+--vim.api.nvim_set_keymap('t', '<C-h>', '<C-\\><C-N><C-w>h', { silent = true })
+--vim.api.nvim_set_keymap('t', '<C-j>', '<C-\\><C-N><C-w>j', { silent = true })
+--vim.api.nvim_set_keymap('t', '<C-k>', '<C-\\><C-N><C-w>k', { silent = true })
+--vim.api.nvim_set_keymap('t', '<C-l>', '<C-\\><C-N><C-w>l', { silent = true })
 
 
 
 -- just as a fun experiment
---keymap('n', '<Esc>', 'j<Esc>', { noremap = false })
+--vim.api.nvim_set_keymap('n', '<Esc>', 'j<Esc>', { noremap = false })
