@@ -32,12 +32,14 @@ call plug#end()
 " Options
 set nocompatible
 set ttyfast
-set number relativenumber
+set signcolumn=yes
+set nonumber norelativenumber
 set numberwidth=6
 set noruler
 set showmode
 set showcmd
 set title
+set titlestring=%t
 set shortmess=atI
 set splitbelow splitright
 set autoindent expandtab tabstop=2 shiftwidth=2
@@ -47,7 +49,8 @@ set hlsearch
 set incsearch
 set ignorecase
 set nostartofline
-set wrap
+set nowrap
+set nofoldenable
 set textwidth=79
 set formatoptions=tcq
 set scrolloff=10
@@ -57,7 +60,7 @@ set wildmode=longest,list,full  " enable autocompletion
 set wildmenu
 set history=1000
 set noerrorbells
-set mouse=a
+set mouse=""
 set clipboard=unnamed
 set encoding=utf-8
 set spellfile=~/.vim/spell/en.utf-8.add
@@ -69,6 +72,7 @@ nnoremap j gj
 nnoremap k gk
 nnoremap L $
 nnoremap H ^
+nnoremap <Esc> :w<CR>
 nnoremap <C-i> <C-i>zz
 nnoremap <C-o> <C-o>zz
 nnoremap <C-u> <C-u>zz
@@ -109,12 +113,17 @@ syntax enable
 set termguicolors
 set background=dark
 silent! colorscheme solarized
+autocmd VimEnter,ColorScheme * highlight clear SignColumn
 
 
 " Autocommands
 filetype on
-" check spelling in markdown files
-autocmd FileType markdown setlocal spell spelllang=en_us
 " treat .md files as markdown
-autocmd BufNewFile,BufRead *.md setlocal filetype=markdown
-
+autocmd BufRead,BufNewFile *.md setlocal filetype=markdown
+" check spelling in specific files
+autocmd FileType markdown,text setlocal spell spelllang=en_us
+" on each save remove any trailing whitespace
+autocmd BufWritePre * :%s/\s\+$//e
+" on each save remove any blank lines at end of file
+" replace 'line('$')' with 'line('$') - 1' to spare one blank line
+autocmd BufWrite *.md,*.txt call deletebufline('%', prevnonblank('$') + 1, line('$'))
