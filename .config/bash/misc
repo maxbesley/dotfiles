@@ -1,16 +1,7 @@
 #!/bin/bash
 # This file is a place for snippets of miscellaneous code
 # that are needed on the computer I'm currently using but
-# are not worth putting in my ~/.bashrc file.
+# are not worth putting in my other bash config files.
 
 
-# ghcup
-export PATH="$PATH:$HOME/.cabal/bin:$HOME/.ghcup/bin"
-
-# desktop alias
-if [[ $(grep -i Microsoft /proc/version) ]]; then
-    alias desktop='cd /mnt/c/users/max/desktop'
-else
-    alias desktop='cd ~/Desktop'
-fi
-
+export NVIM_COLORSCHEME=rose-pine
