@@ -4,12 +4,14 @@
     name: fzf
     state: absent
   become: true
+  when: ansible_os_family == 'Debian'
 
 - name: Check if fzf is installed
   shell: command -v fzf
   register: fzf_exists
   ignore_errors: true
   changed_when: false
+  when: ansible_os_family == 'Debian'
 
 - block:
   - name: Ensure fd is installed
@@ -39,5 +41,5 @@
       depth: 1
     notify: Run the fzf install script
 
-  when: fzf_exists.failed and ansible_os_family == 'Debian'
+  when: ansible_os_family == 'Debian' and fzf_exists.failed
 

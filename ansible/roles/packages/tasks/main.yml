@@ -1,24 +1,10 @@
----
-- block:
-  - name: Update and upgrade APT
-    apt:
-      update_cache: yes
-      upgrade: yes
-
-  - name: Install desired APT packages
-    apt:
-      pkg: "{{ core_pkgs + fun_pkgs }}"
-      state: latest
-
-  - name: Remove useless packages from the cache
-    apt:
-      autoclean: yes
-
-  - name: Remove dependencies that are no longer required and purge their config files
-    apt:
-      autoremove: yes
-      purge: yes
-
-  become: true
+- name: Install packages for Debian-based Linux
+  import_tasks: apt.yml
+  become: yes
   when: ansible_os_family == 'Debian'
+
+- name: Install packages for Arch Linux
+  import_tasks: pacman.yml
+  become: yes
+  when: ansible_os_family == 'Archlinux'
 

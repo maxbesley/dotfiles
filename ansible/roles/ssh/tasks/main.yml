@@ -1,4 +1,13 @@
 ---
+- name: Ensure the ~/.ssh directory exists
+  file:
+    path: '{{ ansible_user_dir }}/.ssh'
+    state: directory
+    owner: '{{ ansible_user_id }}'
+    group: '{{ ansible_user_id }}'
+    mode: '700'
+  become: yes
+
 - name: Copy over my OpenSSH client config
   copy:
     src: config
@@ -6,7 +15,7 @@
     owner: '{{ ansible_user_id }}'
     group: '{{ ansible_user_id }}'
     mode: '600'
-    force: yes
-    backup: yes
+    force: no
+    backup: no
   become: yes
 

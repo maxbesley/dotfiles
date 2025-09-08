@@ -20,7 +20,7 @@
 
   - name: "Download and install the {{ font_name }} font from GitHub"
     unarchive:
-      src: https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/{{ font_name }}.zip
+      src: https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/{{ font_name }}.zip
       dest: "{{ fonts_directory }}/{{ font_name }}"
       remote_src: yes
 

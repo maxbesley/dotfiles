@@ -8,4 +8,3 @@ Host web
 Host *
   Port 22
   LogLevel verbose
-

@@ -1,5 +1,5 @@
 ---
-core_pkgs:
+apt_core_pkgs:
   - build-essential
   - net-tools
   - clang
@@ -14,7 +14,7 @@ core_pkgs:
   - jq
   - atool
 
-fun_pkgs:
+apt_fun_pkgs:
   - sl
   - figlet
   - nyancat
@@ -23,4 +23,26 @@ fun_pkgs:
   - cowsay
   - lolcat
   - pacman4console
+
+pacman_pkgs:
+  - git
+  - stow
+  - curl
+  - openssh
+  - fastfetch
+  - btop
+  - jq
+  - less
+  - vim
+  - neovim
+  - ghostty
+  - tmux
+  - fd
+  - fzf
+  - bat
+  - zoxide
+  - diff-so-fancy
+  - fortune-mod
+  - cowsay
+  - lolcat
 

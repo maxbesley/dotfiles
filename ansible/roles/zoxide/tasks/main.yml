@@ -1,4 +1,14 @@
 ---
-- name: Install zoxide using the install script
-  shell: curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
+- block:
+  - name: Check if zoxide is already installed
+    shell: command -v zoxide
+    register: zoxide_exists
+    ignore_errors: true
+    changed_when: false
+
+  - name: Install zoxide using the install script
+    shell: curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
+    when: zoxide_exists.failed
+
+  when: ansible_os_family == 'Debian'
 

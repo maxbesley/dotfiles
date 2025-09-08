@@ -1,0 +1,20 @@
+---
+- name: Update and upgrade APT
+  apt:
+    update_cache: yes
+    upgrade: yes
+
+- name: Install desired APT packages
+  apt:
+    pkg: '{{ apt_core_pkgs + apt_fun_pkgs }}'
+    state: latest
+
+- name: Remove useless APT packages from the cache
+  apt:
+    autoclean: yes
+
+- name: Remove redundant installed APT packages
+  apt:
+    autoremove: yes
+    purge: yes
+

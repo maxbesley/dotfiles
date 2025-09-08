@@ -1,20 +1,23 @@
 ---
-- name: Install bat through APT
-  apt:
-    name: bat
-    state: latest
-  become: true
+- block:
+  - name: Install bat through APT
+    apt:
+      name: bat
+      state: latest
+    become: true
 
-- name: Find location of bat binary
-  command: which batcat
-  register: batcat_path
-  changed_when: false
+  - name: Find location of bat binary
+    command: which batcat
+    register: batcat_path
+    changed_when: false
 
-- name: Symlink the bat binary
-  file:
-    src: "{{ batcat_path.stdout }}"
-    dest: "/usr/local/bin/bat"
-    owner: "{{ ansible_user_id }}"
-    state: link
-  become: true
+  - name: Symlink the bat binary
+    file:
+      src: "{{ batcat_path.stdout }}"
+      dest: "/usr/local/bin/bat"
+      owner: "{{ ansible_user_id }}"
+      state: link
+    become: true
+
+  when: ansible_os_family == 'Debian'
 

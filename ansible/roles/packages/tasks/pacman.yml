@@ -1,0 +1,11 @@
+---
+- name: Upgrade all pacman packages
+  pacman:
+    update_cache: yes
+    upgrade: yes
+
+- name: Install desired pacman packages
+  pacman:
+    pkg: '{{ pacman_pkgs }}'
+    state: latest
+

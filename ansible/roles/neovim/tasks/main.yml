@@ -4,6 +4,7 @@
     name: neovim
     state: absent
   become: true
+  when: ansible_os_family == 'Debian'
 
 - name: Check if neovim binary is installed
   shell: command -v nvim
@@ -47,5 +48,8 @@
         state: absent
       become: true
 
-  when: build_from_source and nvim_exists.failed
+  when:
+    - build_from_source
+    - nvim_exists.failed
+    - ansible_os_family == 'Debian'
 

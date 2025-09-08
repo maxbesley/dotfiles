@@ -7,5 +7,5 @@
 
 - name: Install Ghostty using a bash script
   shell: curl -sSfL https://raw.githubusercontent.com/mkasberg/ghostty-ubuntu/HEAD/install.sh | bash
-  when: ghostty_exists.failed
+  when: ghostty_exists.failed and ansible_os_family == 'Debian'
 
