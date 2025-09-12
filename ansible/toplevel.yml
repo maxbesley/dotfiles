@@ -7,44 +7,55 @@
     - name: System packages
       include_role:
         name: packages
+        tasks_from: packages.yml
 
     - name: OpenSSH
       include_role:
         name: ssh
+        tasks_from: ssh.yml
 
     - name: Nerd fonts
       include_role:
         name: fonts
+        tasks_from: fonts.yml
 
     - name: fzf
       include_role:
         name: fzf
+        tasks_from: fzf.yml
 
     - name: zoxide
       include_role:
         name: zoxide
+        tasks_from: zoxide.yml
 
     - name: eza
       include_role:
         name: eza
+        tasks_from: eza.yml
 
     - name: bat
       include_role:
         name: bat
+        tasks_from: bat.yml
 
     - name: git-open
       include_role:
         name: git-open
+        tasks_from: git-open.yml
 
     - name: Ghostty
       include_role:
         name: ghostty
+        tasks_from: ghostty.yml
 
     - name: Build and install Neovim from source
       include_role:
         name: neovim
+        tasks_from: neovim.yml
 
     - name: Clojure
       include_role:
         name: clojure
+        tasks_from: clojure.yml
 
